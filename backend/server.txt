@@ -1,0 +1,2 @@
+The server is exactly what it says, it is the server.
+we specified the PORT in the .env file.

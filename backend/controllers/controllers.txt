@@ -1,0 +1,4 @@
+Controllers are basically the functionality in the endpoint requests.
+We technically could do this in the callback function of the route but
+it is better this way.
+In simple terms: WHAT DOES THE ENDPOINT DO
