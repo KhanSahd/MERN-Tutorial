@@ -1,7 +1,11 @@
 const express = require("express"); // The framework
+const colors = require("colors");
 const dotenv = require("dotenv").config();
 const { errorHandler } = require("./middleware/errorMiddleware");
+const connectDB = require("./config/db");
 const port = process.env.PORT || 3000; // Uses the port from the .env file OR if thats not available, uses port 3000 or whatever specified port.
+
+connectDB();
 
 const app = express(); // The app
 
