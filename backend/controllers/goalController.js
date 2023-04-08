@@ -23,6 +23,7 @@ const setGoal = asyncHandler(async (req, res) => {
 
   const goal = await Goal.create({
     text: req.body.text,
+    completed: false,
   });
 
   res.status(200).json(goal);
@@ -39,9 +40,16 @@ const updateGoal = asyncHandler(async (req, res) => {
     throw new Error("Goal not found");
   }
 
-  const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-  });
+  // const updatedGoal = await Goal.findByIdAndUpdate(req.params.id, req.body, {
+  //   new: true,
+  // });
+  const updatedGoal = await Goal.findByIdAndUpdate(
+    req.params.id,
+    { completed: !goal.completed },
+    { new: true }
+  );
+
+  // goal.completed = !goal.completed;
 
   res.status(200).json(updatedGoal);
 });
@@ -57,7 +65,7 @@ const deleteGoal = asyncHandler(async (req, res) => {
     throw new Error("Goal not found");
   }
 
-  const deletedGoal = await Goal.findByIdAndDelete(req.params.id);
+  await Goal.findByIdAndDelete(req.params.id);
 
   res.status(200).json({ id: req.params.id });
 });

@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const goalSchema = mongoose.Schema(
   {
     text: String,
+    completed: Boolean,
   },
   {
     timestamps: true,

@@ -1,0 +1,139 @@
+:root {
+    --primary-color: #1B1725;
+    --secondary-color: #534B62;
+    --third-color: #34E4EA;
+    --tertiary-color: #FF3CC7;
+    --delete-color: #A30B37;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.App {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    height: 100vh;
+    width: 100vw;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: white;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+.todo {
+    position: relative;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 50vw;
+
+}
+
+.todo:hover {
+    opacity: 0.8;
+}
+
+.todo-text {
+    color: white;
+    font-size: 1.3rem;
+}
+
+.todo-checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 999px;
+    margin-right: 1rem;
+}
+
+.delete-todo {
+    position: absolute;
+    /* top: 50; */
+    right: 16px;
+    color: white;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    background-color: var(--delete-color);
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.todo.is-completed .todo-checkbox {
+    background: linear-gradient(var(--third-color), var(--tertiary-color));
+}
+
+.todo.is-completed .todo-text {
+    text-decoration: line-through;
+}
+
+.add-todo {
+    background-color: white;
+    width: 35vw;
+    height: 25vh;
+    border-radius: 50px;
+
+}
+
+.add-todo input {
+    width: 100%;
+    height: 60%;
+    border: none;
+    /* background-color: white; */
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    outline: none;
+    border-radius: 50px 50px 0 0;
+    text-align: center;
+}
+
+.add-todo button {
+    width: 100%;
+    height: 40%;
+    border: none;
+    background-color: var(--tertiary-color);
+    color: white;
+    font-size: 1.3rem;
+    outline: none;
+    border-radius: 0 0 50px 50px;
+    cursor: pointer;
+}
+
+.add-todo-button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(var(--tertiary-color), var(--third-color));
+    color: white;
+    font-size: 1.3rem;
+    outline: none;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    padding: 1rem;
+    margin: 1rem;
+}
+
+.add-todo.hidden {
+    display: none;
+}
