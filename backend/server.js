@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/goals", require("./routes/goalRoutes")); // When sent to the endpoint '/api/goals' it uses the goalRoutes.js to handle it.
+app.use("/api/users", require("./routes/userRoutes")); // When sent to the endpoint '/api/users' it uses the userRoutes.js to handle it.
 
 app.use(errorHandler);
 
