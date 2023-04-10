@@ -1,0 +1,55 @@
+.todo {
+    position: relative;
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 50vw;
+
+}
+
+.todo:hover {
+    opacity: 0.8;
+    transition: 0.4s;
+}
+
+.todo-text {
+    color: white;
+    font-size: 1.3rem;
+}
+
+.todo-checkbox {
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color);
+    border-radius: 999px;
+    margin-right: 1rem;
+    transition: 0.4s;
+}
+
+.delete-todo {
+    position: absolute;
+    right: 16px;
+    color: white;
+    cursor: pointer;
+    width: 16px;
+    height: 16px;
+    background-color: var(--delete-color);
+    border-radius: 999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+}
+
+.is-completed .todo-checkbox {
+    background-color: var(--primary-color);
+    background: linear-gradient(to bottom, var(--third-color), var(--tertiary-color));
+}
+
+.is-completed .todo-text {
+    text-decoration: black line-through;
+}

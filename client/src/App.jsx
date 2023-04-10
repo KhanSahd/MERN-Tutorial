@@ -1,5 +1,9 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import Login from './component/login/Login';
+import Header from './component/header/Header';
+import Todo from './component/todo/Todo';
+import Register from './component/register/Register';
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -90,51 +94,32 @@ function App() {
       }
       return todo
     })))
-
-
-    // setTodos(todos => todos.map(todo => {
-    //   if (todo._id === id) {
-    //     todo.completed = data.completed
-    //   }
-    //   return todo
-    // }))
   }
 
 
   return (
     <div className="App">
       {!loggedIn ? (
-        <div className="login">
-          <h1>Log In</h1>
-          <div className='login-form'>
-              <input type="text" placeholder="email" onChange={e => setEmail(e.target.value)} />
-              <input type="password" placeholder="Password" onChange={e => setPassword(e.target.value)} />
-              <button onClick={() => login()}>Log In</button>
-          </div>
+        <div className='app-log-reg'>
+          <Register />
+          <Login login={login} setEmail={setEmail} setPassword={setPassword} />
         </div>
       ) : (
-        <div className='header'>
-          <h1>Hello {user.name}</h1>
-          <h2>To-Do List</h2>
-        </div>
+        <>
+          <Header name={user.name} />
+          <div className="add-todo-button" onClick={() => setPopupActive(true)}>
+            +
+          </div>
+        </>
       )}
 
       <div className="todos ">
         {todos.map((todo) => (
-          <div className={`todo ${todo.completed ? 'is-completed' : ''}`
-          } key={todo._id} onClick={() => completeTodo(todo._id)}>
-            <div className="todo-checkbox"></div>
-            <div className="todo-text">{todo.text}</div>
-            <div className="delete-todo" onClick={() => deleteTodo(todo._id)}>x</div>
-          </div>
+          <Todo todo={todo} completeTodo={completeTodo} deleteTodo={deleteTodo} key={todo._id} />
         ))}
       </div>
 
-      {loggedIn ? (
-        <div className="add-todo-button" onClick={() => setPopupActive(true)}>
-          +
-        </div>
-      ) : <div></div>}
+      
 
       <div className={`add-todo ${popupActive ? "" : "hidden"}`}>
         <input type="text" value={newtodo} onChange={(e) => setNewtodo(e.target.value)} placeholder='Enter a task' />
