@@ -53,3 +53,9 @@
 .is-completed .todo-text {
     text-decoration: black line-through;
 }
+
+@media screen and (max-width: 768px) {
+    .todo {
+        width: 80vw;
+    }
+}

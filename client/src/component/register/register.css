@@ -45,3 +45,10 @@
     cursor: pointer;
 
 }
+
+@media screen and (max-width: 768px) {
+    .register {
+        padding: 0;
+        font-size: 0.8rem;
+    }
+}

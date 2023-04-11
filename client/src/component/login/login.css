@@ -45,3 +45,15 @@
     cursor: pointer;
 
 }
+
+@media screen and (max-width: 768px) {
+    .login {
+        padding: 0;
+        font-size: 0.8rem;
+    }
+
+    .login input {
+        font-size: 1rem;
+        
+    }
+}

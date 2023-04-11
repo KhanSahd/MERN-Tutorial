@@ -18,7 +18,7 @@ function App() {
     if((loggedIn)){
       getTodos();
     }
-  }, [todos, loggedIn])
+  }, [loggedIn])
 
 
 
@@ -58,7 +58,7 @@ function App() {
     
   }
 
-  const deleteTodo = async (id) => {
+  const deleteTodo = async (id, e) => {
     await fetch('http://localhost:8000/api/goals/' + id, {
       method: 'DELETE',
       headers: {
@@ -90,7 +90,7 @@ function App() {
     }).then(res => res.json())
     .then(setTodos(todos.map(todo => {
       if (todo._id === id) {
-        todo.completed = data.completed
+        todo.completed = !todo.completed
       }
       return todo
     })))
