@@ -1,0 +1,24 @@
+.button {
+    border: solid 1px black;
+    border-radius: 25px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    color: black;
+}
+
+.filled {
+    background-color: black;
+    color: white;
+    transition: 0.3s;
+}
+
+.button:hover {
+    background-color: black;
+    color: white;
+}
+
+.filled:hover {
+    background-color: white;
+    color: black;
+}

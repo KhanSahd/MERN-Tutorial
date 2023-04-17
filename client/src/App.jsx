@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import Login from './component/login/Login';
-import Header from './component/header/Header';
-import Todo from './component/todo/Todo';
 import Register from './component/register/Register';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
+import Dashboard from './component/dashboard/Dashboard';
+import Root from './component/Root/Root';
+import Landingpage from './component/landingpage/Landingpage';
 
 function App() {
   const [todos, setTodos] = useState([])
@@ -21,7 +23,8 @@ function App() {
   }, [loggedIn])
 
 
-
+  
+  
   const login = async () => {
     await fetch('http://localhost:8000/api/users/login', {
       method: 'POST',
@@ -35,13 +38,16 @@ function App() {
       if(data){
         setLoggedIn(true)
         setUser(data)
+        console.log(data)
       } else {
         console.log('error')
       }
     })
     .catch((err) => console.error('error: ' + err))
+    setEmail('')
+    setPassword('')
   }
-
+  
 
   const getTodos = async () => {
     await fetch('http://localhost:8000/api/goals', {
@@ -97,9 +103,23 @@ function App() {
   }
 
 
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+      <Route path="/" element={<Root />}>
+        <Route path="/" element={<Landingpage />} />
+        <Route path="login" element={<Login login={login} setEmail={setEmail} setPassword={setPassword} />} />
+        <Route path="register" element={<Register />} />
+        <Route index path="dashboard" element={<Dashboard />} />
+      </Route>
+      
+    )
+  );
+
+
+
   return (
     <div className="App">
-      {!loggedIn ? (
+      {/* {!loggedIn ? (
         <div className='app-log-reg'>
           <Register />
           <Login login={login} setEmail={setEmail} setPassword={setPassword} />
@@ -124,7 +144,9 @@ function App() {
       <div className={`add-todo ${popupActive ? "" : "hidden"}`}>
         <input type="text" value={newtodo} onChange={(e) => setNewtodo(e.target.value)} placeholder='Enter a task' />
         <button onClick={() => { createTodo(newtodo); setNewtodo(''); setPopupActive(false) }}>Add</button>
-      </div>
+      </div> */}
+      
+      <RouterProvider router={router} />
 
     </div>
   )

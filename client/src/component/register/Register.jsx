@@ -20,6 +20,7 @@ const Register = () => {
   return (
     <div className="register">
       <h1>Register</h1>
+      <h2>Please create an account</h2>
       <div className="register-form">
         <input type="text" placeholder="name" onChange={(e) => {
             setName(e.target.value)

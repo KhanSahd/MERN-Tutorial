@@ -4,7 +4,7 @@
     --third-color: #CEC2FF;
     --tertiary-color: #B3B3F1;
     --delete-color: #A30B37;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Monsterrat', sans-serif;
 }
 
 * {
@@ -13,11 +13,8 @@
 }
 
 .App {
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
     height: 100vh;
     width: 100vw;
-    padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -87,6 +84,7 @@
 .add-todo.hidden {
     display: none;
 }
+
 
 @media screen and (max-width: 768px) {
 
