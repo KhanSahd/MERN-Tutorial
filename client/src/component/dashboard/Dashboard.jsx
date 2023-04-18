@@ -3,6 +3,11 @@ import './Dashboard.css'
 
 const Dashboard = () => {
 
+  const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://mytodos-sahd.herokuapp.com/api/goals/"
+    : "http://localhost:8000/api/goals";
+
   const user = JSON.parse(localStorage.getItem('user'));
 
   const [todos, setTodos] = useState([])
@@ -14,7 +19,7 @@ const Dashboard = () => {
   
   
   const getTodos = async () => {
-    await fetch('http://localhost:8000/api/goals', {
+    await fetch(API_URL, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -29,7 +34,7 @@ const Dashboard = () => {
   }
 
   const deleteTodo = async (id, e) => {
-    await fetch('http://localhost:8000/api/goals/' + id, {
+    await fetch(API_URL + id, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${user.token}`,
@@ -39,7 +44,7 @@ const Dashboard = () => {
   }
 
   const createTodo = async (text) => {
-    await fetch('http://localhost:8000/api/goals', {
+    await fetch(API_URL, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -52,7 +57,7 @@ const Dashboard = () => {
   }
 
   const completeTodo = async (id) => { 
-    await fetch('http://localhost:8000/api/goals/' + id, {
+    await fetch(API_URL + id, {
       method: 'PUT',
       headers: {
         'Authorization': `Bearer ${user.token}`,

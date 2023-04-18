@@ -1,6 +1,9 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8000/api/users/";
+const API_URL =
+  process.env.NODE_ENV === "production"
+    ? "https://mytodos-sahd.herokuapp.com/api/users/"
+    : "http://localhost:8000/api/users/";
 
 //Register user
 const register = async (user) => {

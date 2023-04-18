@@ -18,36 +18,14 @@ function App() {
   const [password, setPassword] = useState('');
   const [user, setUser] = useState({});
   
-  
-  const login = async () => {
-    await fetch('http://localhost:8000/api/users/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      if(data){
-        setLoggedIn(true)
-        setUser(data)
-        console.log(data)
-      } else {
-        console.log('error')
-      }
-    })
-    .catch((err) => console.error('error: ' + err))
-    setEmail('')
-    setPassword('')
-  }
+
   
 
 
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-      <Route path="/" element={<Root loggedIn={loggedIn} />}>
+      <Route path="/" element={<Root />}>
         <Route path="/" element={<Landingpage />} />
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />

@@ -7,7 +7,7 @@ const Root = ({loggedIn}) => {
   return (
     <>
         <div>
-            <Navbar loggedIn={loggedIn} />
+            <Navbar />
         </div>
         <div className='outlet-container'>
             <Outlet />
