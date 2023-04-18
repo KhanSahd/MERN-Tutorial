@@ -4,26 +4,28 @@ import { Link } from 'react-router-dom'
 import { FaSignInAlt, FaUserAlt } from 'react-icons/fa'
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { reset, logout } from '../../features/auth/authSlice';
 
 const Navbar = ({loggedIn}) => {
 
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const { user } = useSelector(state => state.auth);
 
-    const logout = () => {
-        localStorage.removeItem('user');
-        navigate('/');
+    const onLogout = () => {
+        dispatch(logout());
         dispatch(reset())
+        navigate('/');
     }
 
   return (
     <div className='navbar'>
-        <Link to={`${localStorage.getItem('user') ? '/dashboard' : '/'}`} style={{textDecoration: 'none', color: 'black'}}>
+        <Link to={`${user ? '/dashboard' : '/'}`} style={{textDecoration: 'none', color: 'black'}}>
             <p className='logo'>MyTodos</p>
         </Link>
         <div className="buttons">
-            {!localStorage.getItem('user') ? (
+            {!user ? (
             <>
                 <Link className='icon' to="/login" style={{textDecoration: 'none', color: 'black'}}>
                     {/* <Button text='Login' filled={false}/> */}
@@ -35,7 +37,7 @@ const Navbar = ({loggedIn}) => {
                 </Link>
             </>
             ) : (
-                <div className='icon' onClick={logout}>
+                <div className='icon' onClick={onLogout}>
                     Log Out
                 </div>
             )
