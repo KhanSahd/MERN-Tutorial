@@ -17,6 +17,11 @@
     margin: 0 1rem;
     padding: 0.5rem 1rem;
     font-weight: bold;
+    background-color: black;
+    background-image: linear-gradient(to bottom, red, lightblue);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .buttons {
@@ -33,4 +38,10 @@
     justify-content: space-evenly;
     gap: 0.5rem;
     font-weight: bold;
+    transition: 0.4s;
+}
+
+.icon:hover {
+    opacity: 0.8;
+    cursor: pointer;
 }

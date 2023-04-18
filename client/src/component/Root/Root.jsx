@@ -3,11 +3,11 @@ import Navbar from '../Navbar/Navbar'
 import { Outlet } from 'react-router-dom'
 import './Root.css'
 
-const Root = () => {
+const Root = ({loggedIn}) => {
   return (
     <>
         <div>
-            <Navbar />
+            <Navbar loggedIn={loggedIn} />
         </div>
         <div className='outlet-container'>
             <Outlet />

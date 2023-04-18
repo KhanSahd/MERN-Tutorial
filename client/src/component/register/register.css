@@ -1,7 +1,7 @@
 .register {
     /* background-color: var(--primary-color); */
     /* color: var(--secondary-color); */
-    height: 50%;
+    height: 70%;
     width: 50%;
     padding: 1rem;
     display: flex;
@@ -15,13 +15,15 @@
     font-weight: bold;
     margin-bottom: 1rem;
     text-transform: uppercase;
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
 }
 
 .register h2 {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 1rem;
-    text-transform: uppercase;
     color: gray;
 }
 
@@ -38,7 +40,7 @@
 
 .register-form input {
     width: 100%;
-    height: 20%;
+    height: 15%;
     border: solid 1px black;
     color: black;
     font-size: 1.3rem;
@@ -48,7 +50,7 @@
 
 .register-form button {
     width: 100%;
-    height: 20%;
+    height: 15%;
     border: none;
     background-color: black;
     color: white;
